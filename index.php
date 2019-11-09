@@ -4,14 +4,7 @@
 
 <head>
     <title>HostelManagementSystem</title>
-  <style> /*
- * Copyright (c) 2012 Thibaut Courouble
- * http://www.cssflow.com
- * Licensed under the MIT License
- *
- * Sass/SCSS source: https://goo.gl/0jzXf
- * PSD by Orman Clark: https://goo.gl/D8zmk
- */
+  <style>
 
 body {
   font: 13px/20px "Lucida Grande", Tahoma, Verdana, sans-serif;
@@ -195,7 +188,7 @@ input[type=submit]:active {
       <p><input type="password" name="password" value="" placeholder="Password"></p>
       <p class="remember_me">
         <label>
-          <input type="checkbox" name="remember_me" id="remember_me">
+         <input type="checkbox" name="remember_me" id="remember_me">
           Remember me on this computer
         </label>
       </p>
