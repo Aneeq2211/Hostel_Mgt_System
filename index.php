@@ -31,11 +31,13 @@ $error = "Incorrect username or password.";
 <head>
     <title>HostelManagementSystem</title>
     <link rel="stylesheet" href="index.css" />
+    
 
 </head>
 <body>
-
-
+<div height="100%">
+  <img src="C:\wamp64\www\Hostel_Mgt_System\1552457480php6LZTsx.jpeg" alt="">
+</div>
 <div class="login">
     <h1>Login to Hostel Management System</h1>
     <form method="post" action="">
@@ -54,5 +56,6 @@ $error = "Incorrect username or password.";
   <div class="login-help">
     <p>Forgot your password? <a href="#">Click here to reset it</a>.</p>
   </div>
+
 </body>
 </html>

@@ -2,6 +2,24 @@
 include "nav.php";
 include "config.php";
 
+
+
+
+      if(isset($_POST['delete']))
+      {
+       $count=array();
+       $count=count($_POST['checkbox']);
+       
+       for($i=0;$i<$count;$i++)
+        {
+           $del_id=$_POST['checkbox'][$i];
+           
+           $query="Delete from student where reg_id='$del_id'";
+           mysqli_query($conn,$query);
+        }
+      }
+  
+
 ?>
 
 <!doctype html>
@@ -33,11 +51,13 @@ include "config.php";
     <table class="table">
       <thead class="thead-dark">
         <tr>
+          <th>Select</th>
           <th>Registration Id</th>
           <th>Student Name</th>
           <th>USN</th>
           <th>Room No</th>
           <th>Branch</th>
+          <th>Sem</th>
           <th>Gender</th>
           <th>Contact No</th>
           <th>Blood Group</th>
@@ -50,32 +70,57 @@ include "config.php";
         </tr>
         </thead>
         <tbody>
+        
+              
         <?php
           while( $row= $result->fetch_assoc()){
-            echo
-            " <tr>
-              <td>{$row ['reg_id']}</td>
-              <td>{$row ['sname']}</td>
-              <td>{$row ['usn']}</td>
-              <td>{$row ['room_id']}</td>
-              <td>{$row ['branch']}</td>
-              <td>{$row ['gender']}</td>
-              <td>{$row ['contact_no']}</td>
-              <td>{$row ['blood group']}</td>
-              <td>{$row ['dob']}</td>
-              <td>{$row ['f_name']}</td>
-              <td>{$row ['m_name']}</td>
-              <td>{$row ['parent_no']}</td>
-            </tr>\n";
-          }
-          ?>
+        
+            
+        ?>
+            
+            
           
+           <?php
+              
+             echo "<tr>"?>
+              <td><input type="checkbox" name="checkbox[]" value=<?php echo $row['reg_id'] ?>></td>
+              <td><?php echo"{$row ['reg_id']}"?></td>
+              <td><?php echo"{$row ['sname']}"?></td>
+              <td><?php echo"{$row ['usn']}"?></td>
+              <td><?php echo"{$row ['room_id']}"?></td>
+              <td><?php echo"{$row ['branch']}"?></td>
+              <td><?php echo"{$row ['sem']}"?></td>
+              <td><?php echo"{$row ['gender']}"?></td>
+              <td><?php echo"{$row ['contact_no']}"?></td>
+              <td><?php echo"{$row ['blood_group']}"?></td>
+              <td><?php echo"{$row ['dob']}"?></td>
+              <td><?php echo"{$row ['f_name']}"?></td>
+              <td><?php echo"{$row ['m_name']}"?></td>
+              <td><?php echo"{$row ['parent_no']}"?></td>
+            <?php echo "</tr>\n";
+          }?>
+          
+         
           
           
         </tbody>
     </table> 
+    
+    
+   
+              
     </div> 
+    
     </form>
+    <div align="center">
+    <form action="updatestudent.php" method="post" style="display:inline-block">
+    <input type="submit" name="update" value="Update">
+    </form>
+    <form action="studentdetails.php" method="post" style="display:inline-block">
+    <input type="submit" name="delete" value="Delete">
+    
+    </form>
+    </div>
     
     </div>
     <?php $conn->close(); ?>
