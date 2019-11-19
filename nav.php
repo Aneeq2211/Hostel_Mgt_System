@@ -48,6 +48,9 @@
                     <a class="nav-link" href="employees.php">Employees</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="feedetails.php">Fee</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="index.php">Logout</a>
                 </li>
             </ul>

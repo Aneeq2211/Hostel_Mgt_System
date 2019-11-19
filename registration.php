@@ -23,7 +23,7 @@ $bloodgroup=$_POST['bloodgrp'];
 
 //(usn,reg_id,room_id,sname,sem,branch,gender,contact_no,parent_no,m_name,f_name,dob,blood_group) VALUES
 
-$sql = "INSERT INTO student VALUES('$usn','$regno','$roomno','$name',$sem,'$branch','$gender','$contactno','$parentno','$mname','$fname','$dob','$bloodgroup')";
+$sql = "INSERT INTO `student` (`usn`, `reg_id`, `room_id`, `sname`, `sem`, `branch`, `gender`, `contact_no`, `parent_no`, `m_name`, `f_name`, `dob`, `blood_group`) VALUES ('$usn', '$regno', '$roomno', '$name', '$sem', '$branch', '$gender', '$contactno', '$parentno', '$mname', '$fname', '$dob', '$bloodgroup')";
 $result = mysqli_query($conn,$sql);
 if ($result) {
   echo "New record created successfully";

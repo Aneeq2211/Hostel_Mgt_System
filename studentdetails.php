@@ -1,25 +1,12 @@
 <?php 
 include "nav.php";
 include "config.php";
+      
+      
+      $sql="SELECT * FROM student";
+      $result=$conn->query($sql);
 
-
-
-
-      if(isset($_POST['delete']))
-      {
-       $count=array();
-       $count=count($_POST['checkbox']);
-       
-       for($i=0;$i<$count;$i++)
-        {
-           $del_id=$_POST['checkbox'][$i];
-           
-           $query="Delete from student where reg_id='$del_id'";
-           mysqli_query($conn,$query);
-        }
-      }
-  
-
+      
 ?>
 
 <!doctype html>
@@ -41,17 +28,18 @@ include "config.php";
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <div class="details">
+    
     <form method="post" action="">
     <?php
-      $sql="SELECT * FROM student";
-      $result=$conn->query($sql);
+      
+     // $count=mysqli_num_rows($result);
     ?>
     <div class="table-inverse table-responsive table-bordered table-hover">
     
     <table class="table">
       <thead class="thead-dark">
         <tr>
-          <th>Select</th>
+          
           <th>Registration Id</th>
           <th>Student Name</th>
           <th>USN</th>
@@ -73,17 +61,13 @@ include "config.php";
         
               
         <?php
+          $i=0;
           while( $row= $result->fetch_assoc()){
-        
-            
-        ?>
-            
-            
-          
-           <?php
+         ?>
               
-             echo "<tr>"?>
-              <td><input type="checkbox" name="checkbox[]" value=<?php echo $row['reg_id'] ?>></td>
+              <tr>
+               
+              
               <td><?php echo"{$row ['reg_id']}"?></td>
               <td><?php echo"{$row ['sname']}"?></td>
               <td><?php echo"{$row ['usn']}"?></td>
@@ -98,11 +82,9 @@ include "config.php";
               <td><?php echo"{$row ['m_name']}"?></td>
               <td><?php echo"{$row ['parent_no']}"?></td>
             <?php echo "</tr>\n";
+            $i++;
           }?>
-          
-         
-          
-          
+
         </tbody>
     </table> 
     
@@ -110,17 +92,20 @@ include "config.php";
    
               
     </div> 
-    
     </form>
     <div align="center">
+
     <form action="updatestudent.php" method="post" style="display:inline-block">
-    <input type="submit" name="update" value="Update">
+      <input type="submit" name="update" value="Update">
     </form>
-    <form action="studentdetails.php" method="post" style="display:inline-block">
-    <input type="submit" name="delete" value="Delete">
+
+    <form action="deletestudent.php" method="post" style="display:inline-block">
+      <input type="submit" name="delete" value="Delete">
+    </form>
     
-    </form>
     </div>
+    
+    
     
     </div>
     <?php $conn->close(); ?>
